@@ -1,0 +1,14 @@
+{
+    "name": "ZyrNT",
+    "description": "ZyrNT 是一個簡單且美觀的新分頁擴充功能，提供自訂義的新分頁，將來會推出更多功能始自定義能更加完善。",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "chrome_url_overrides": {
+        "newtab": "index.html"
+    },
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    }
+}

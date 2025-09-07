@@ -1,0 +1,343 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-color: #006bd0;
+    --main-color-light: #e0f3ff;
+    --main-color-dark: #004a8f;
+    --main-color-shadow: #4e95c830;
+    --main-color-border: #8fc7fb;
+    --main-color-placeholder: #1990f885;
+}
+
+body {
+    height: 100vh;
+    background-color: #75bcff;
+    font-family: "Noto Sans TC", sans-serif;
+    color: var(--main-color-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: width 0.3s ease;
+    width: 100vw;
+}
+
+body.setting-open {
+    width: calc(100vw - 320px);
+}
+
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    user-select: none;
+    -webkit-user-drag: none;
+    transition: opacity 0.3s ease;
+}
+
+.bg.hidden {
+    opacity: 0;
+}
+
+.logo {
+    max-width: 200px;
+    position: fixed;
+    top: 1.2rem;
+    left: 1rem;
+    margin-right: 1rem;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: var(--main-color-light);
+    border-radius: 2rem;
+    padding: 0.6rem 1.2rem;
+    gap: 0.7rem;
+    width: 80%;
+    max-width: 800px;
+    min-width: 220px;
+    box-shadow: 0 4px 24px var(--main-color-shadow),
+        0 1.5px 8px #0001;
+    transition: box-shadow 0.2s, border 0.2s;
+    border: 1.5px solid var(--main-color-border);
+    position: relative;
+}
+
+.search-bar:focus-within {
+    box-shadow: 0 8px 32px var(--main-color-shadow),
+        0 2px 12px #0002;
+    border: 2px solid var(--main-color);
+    background-color: var(--main-color-light);
+}
+
+.search-bar svg {
+    min-width: 26px;
+    min-height: 26px;
+    opacity: 0.85;
+    filter: drop-shadow(0 1px 2px var(--main-color-shadow));
+    fill: var(--main-color);
+}
+
+.search-bar input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: var(--main-color);
+    font-size: 1.4rem;
+    outline: none;
+    font-family: "Huninn", sans-serif;
+    padding: 0.1rem 0.2rem;
+    letter-spacing: 0.01em;
+    transition: color 0.2s;
+}
+
+.search-bar input::placeholder {
+    color: var(--main-color-placeholder);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    user-select: none;
+}
+
+.search-bar input::selection {
+    background-color: var(--main-color-shadow);
+}
+
+.setting-btn {
+    position: fixed;
+    right: 1.3rem;
+    bottom: 1.3rem;
+    left: auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s;
+    fill: var(--main-color-dark);
+    opacity: 0.6;
+}
+
+.setting-btn:hover {
+    opacity: 1;
+}
+
+.setting-panel {
+    position: fixed;
+    right: 0;
+    top: 0;
+    left: auto;
+    bottom: 0;
+    height: 100vh;
+    background: #fff;
+    color: var(--main-color-dark);
+    border-radius: 1.3rem 0 0 1.3rem;
+    padding: 3.3rem 1.5rem 1.5rem;
+    width: 320px;
+    z-index: 30;
+    gap: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+    border-left: 2px solid var(--main-color-border);
+    transform: translateX(320px);
+    transition: transform 0.3s ease;
+}
+
+.setting-panel.open {
+    pointer-events: auto;
+    transform: translateX(0);
+}
+
+.setting-panel.closing {
+    pointer-events: none;
+    transform: translateX(320px);
+}
+
+.setting-panel .setting-item {
+    font-size: 1.08rem;
+    color: var(--main-color-dark);
+    opacity: 0.92;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    border-radius: 0.5rem;
+    width: 100%;
+}
+
+.setting-panel .setting-item span {
+    user-select: none;
+}
+
+.setting-panel label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.setting-panel input[type="color"] {
+    width: 2.2rem;
+    height: 2.2rem;
+    border: none;
+    vertical-align: middle;
+    cursor: pointer;
+    background: #f8fafc;
+}
+
+.setting-panel input[type="checkbox"] {
+    accent-color: var(--main-color);
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 0.5rem;
+    border: 1.5px solid var(--main-color-border);
+}
+
+.setting-panel input[type="file"] {
+    display: none;
+}
+
+.setting-panel .setting-file-btn {
+    font-size: 0.98rem;
+    color: var(--main-color);
+    background: none;
+    border: 1px solid var(--main-color-border);
+    border-radius: 5rem;
+    padding: 0.3rem 0.7rem;
+    margin-left: 0.2rem;
+    background-color: transparent;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.setting-panel .setting-file-btn:hover {
+    background: var(--main-color-light);
+    border-color: var(--main-color);
+    color: var(--main-color-dark);
+}
+
+.setting-panel .bg-upload-option {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.setting-panel .bg-upload-option div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.setting-panel .bg-preview {
+    width: 100%;
+    margin-top: 0.8rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px #0001;
+    aspect-ratio: 16/9;
+    user-select: none;
+}
+
+.setting-panel .bg-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: 0 0 20px #000;
+}
+
+.setting-panel .bg-upload-option,
+.setting-panel .bg-color-option {
+    transition: opacity 0.5s ease;
+    opacity: 1;
+    visibility: visible;
+    margin-bottom: 1.2rem;
+    position: relative;
+    height: auto;
+    z-index: 1;
+}
+
+.setting-panel .bg-upload-option.hidden,
+.setting-panel .bg-color-option.hidden {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    pointer-events: none;
+    height: 0;
+    margin: 0;
+    top: -9999px;
+    left: -9999px;
+    z-index: -1;
+}
+
+.setting-panel hr {
+    width: 80%;
+    border: none;
+    border-top: 1px solid var(--main-color-border);
+}
+
+.setting-panel .close-btn {
+    background: #f8fafc;
+    border: 1.5px solid var(--main-color-border);
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: 1.1rem;
+    right: 1.1rem;
+    opacity: 0.8;
+    transition: opacity 0.2s, background 0.18s, border 0.18s;
+    width: 2.3rem;
+    height: 2.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.setting-panel .close-btn svg {
+    fill: var(--main-color);
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.setting-panel .close-btn:hover {
+    opacity: 1;
+    background: #e0f3ff;
+    border: 1.5px solid var(--main-color);
+}
+
+.shortcuts {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@keyframes fadeIn {
+    from {
+        transform: translateX(320px);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(320px);
+    }
+}
