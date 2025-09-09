@@ -193,9 +193,7 @@ const SearchManager = {
     performSearch() {
         const query = elements.searchInput.value.trim();
         if (query) {
-            window.location.href = `https://www.google.com/search?q=${encodeURIComponent(
-                query
-            )}`;
+            chrome.search.query({ text: query });
         }
     },
 
