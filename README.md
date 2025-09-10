@@ -64,7 +64,8 @@ ZyrNT 是一個簡單且美觀的新分頁擴充功能，提供自訂義的新�
     -   **透過 CRX 下載專案：**
         1. 下載 CRX 檔案
         2. 將 CRX 檔案拖曳至 [擴充管理頁面](chrome://extensions/)
--   #### Chrome 擴充功能商店安裝（目前在審查中）
+-   #### Chrome 擴充功能商店安裝
+    -   [前往 Chrome 線上應用程式商店](https://chromewebstore.google.com/detail/zyrnt/ipeioiohfjiohgndlhoglhloipocenoj)
 
 ## 發行版本
 
